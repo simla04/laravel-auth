@@ -1,6 +1,8 @@
 <?php
 
+// use App\Http\Controllers\Admin\PostController;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,11 +24,12 @@ use Illuminate\Support\Facades\Route;
 
     Route::middleware('auth')
     ->namespace('Admin')
-    ->prefix('admin')
+    ->prefix('admin') //localhost
     ->name('admin.')
     ->group(function(){
         Route::get('/', 'HomeController@index')->name('index');
         // controllers per crud
+        Route::resource('/posts', PostController::class);
     });
 
 
